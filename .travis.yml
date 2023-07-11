@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ranuon98/docker-test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ranuon98/docker-test npm run test -- --coverage
